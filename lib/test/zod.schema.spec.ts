@@ -7,7 +7,7 @@ import {
   CREDENTIALS_CONNECTION_PROPS,
 } from '../';
 
-describe('Zod schema', () => {
+describe('Zod schema (spec)', () => {
   [
     {
       description: 'Should fail if OS_CONNECTION_METHOD is missing',

@@ -11,7 +11,7 @@ import { ConnectionMethod } from '../os.interfaces';
 import { OS_HOST } from '../os.defaults';
 import { CREDENTIALS_CONNECTION_PROPS, SERVICE_ACCOUNT_CONNECTION_PROPS } from '../os.constants';
 
-describe('OSLocalSchema', () => {
+describe('OSLocalSchema (spec)', () => {
   [
     {
       description: `Should fail if OS_CONNECTION_METHOD is different than "${ConnectionMethod.Local}"`,

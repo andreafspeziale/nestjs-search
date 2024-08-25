@@ -6,7 +6,7 @@ import { getOSClientToken } from '../os.utils';
 import { ConnectionMethod, OS_HOST, OS_PROXY_HOST, OSConfig, OSModule } from '../';
 import { TestService } from './test.service';
 
-describe('Module and client load', () => {
+describe('Module and client load (spec)', () => {
   const x: ({ description: string } & OSConfig)[] = [
     {
       description: `Config: ${ConnectionMethod.Local}`,
