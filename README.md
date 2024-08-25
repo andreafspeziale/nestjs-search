@@ -95,7 +95,7 @@ import { Client } from '@opensearch-project/opensearch';
       connectionMethod: ConnectionMethod.Local,
     }),
   ],
-  ...
+  ....
 })
 export class CoreModule {}
 ```
@@ -113,14 +113,14 @@ import { Config } from './config';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      ...
+      ....
     }),
     OSModule.forRootAsync({
       useFactory: (cs: ConfigService<Config, true>) => cs.get<Config['os']>('os'),
       inject: [ConfigService],
     }),
   ],
-  ...
+  ....
 })
 export class CoreModule {}
 ```
@@ -150,30 +150,31 @@ import {
   ServiceAccount,
 } from '@andreafspeziale/nestjs-search';
 
-...
+....
 // Your config supporting only "Local" and "ServiceAccount" connection methods
-export type Config = OSConfig<Local | ServiceAccount> & ...;
+export type Config = OSConfig<Local | ServiceAccount> & ....;
 ```
 
 ### Decorators
 > use the client and create your own service
 
-#### InjectOSClient()
+#### InjectOSModuleOptions() and InjectOS()
 
 `src/samples/samples.service.ts`
 
 ```ts
 import { Injectable } from '@nestjs/common';
-import { InjectOSClient } from '@andreafspeziale/nestjs-search';
+import { InjectOS, InjectOSModuleOptions, OSModuleOptions } from '@andreafspeziale/nestjs-search';
 import { Client } from '@opensearch-project/opensearch';
 
 @Injectable()
 export class SamplesService {
   constructor(
-    @InjectOSClient() private readonly osClient: Client
+    @InjectOSModuleOptions() private readonly osModuleOptions: OSModuleOptions, // Showcase purposes
+    @InjectOS() private readonly osClient: Client
   ) {}
 
-  ...
+  ....
 }
 ```
 
@@ -260,11 +261,11 @@ import {
 } from '@andreafspeziale/nestjs-search';
 import { IOSLocalSchema, IOSServiceAccountSchema } from '@andreafspeziale/nestjs-search/dist/class-validator';
 
-...
+....
 // Your application config supporting only "Local" and "ServiceAccount" connection methods
 export type Config = SomeLocalConfig & OSConfig<Local | ServiceAccount> & SomeOtherConfig;
 
-...
+....
 // Shape of your application the ENV variables
 export type ENVSchema = ISomeLocalSchema &
   ISomeOtherSchema &
@@ -339,7 +340,7 @@ export const parse = (e: Record<string, unknown>): ENVSchema => {
 };
 
 export const mapConfig = (e: ENVSchema): Config => {
-  ...
+  ....
   if (e.OS_CONNECTION_METHOD === ConnectionMethod.ServiceAccount) {
     return {
       os: {
@@ -373,7 +374,7 @@ export const mapConfig = (e: ENVSchema): Config => {
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { OSModule } from '@andreafspeziale/nestjs-search';
 import { parse, mapConfig, Config } from '../config';
-...
+
 @Module({
   imports: [
     ConfigModule.forRoot({

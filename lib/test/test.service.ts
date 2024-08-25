@@ -1,10 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { Client } from '@opensearch-project/opensearch';
-import { InjectOSClient } from '../';
+import { InjectOS, OSModuleOptions, InjectOSModuleOptions } from '../';
 
 @Injectable()
 export class TestService {
-  constructor(@InjectOSClient() private readonly osClient: Client) {}
+  constructor(
+    @InjectOSModuleOptions() private readonly osModuleOptions: OSModuleOptions,
+    @InjectOS() private readonly osClient: Client,
+  ) {}
+
+  getConfig(): OSModuleOptions {
+    return this.osModuleOptions;
+  }
 
   getClient(): Client {
     return this.osClient;

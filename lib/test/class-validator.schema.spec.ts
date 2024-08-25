@@ -4,7 +4,7 @@ import {
   OSCredentialsSchema,
   OSLocalSchema,
   OSProxySchema,
-  OSSChema,
+  OSSchema,
   OSServiceAccountSchema,
 } from '../class-validator';
 import { ConnectionMethod } from '../os.interfaces';
@@ -283,7 +283,7 @@ describe('OSCredentialsSchema', () => {
   );
 });
 
-describe('OSSChema', () => {
+describe('OSSchema', () => {
   [
     {
       description: 'Should fail if OS_HOST is set',
@@ -394,7 +394,7 @@ describe('OSSChema', () => {
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
       it(`${description}`, async () => {
-        const envSchemaInstance = plainToInstance(OSSChema, env);
+        const envSchemaInstance = plainToInstance(OSSchema, env);
 
         const errors = validateSync(envSchemaInstance);
 

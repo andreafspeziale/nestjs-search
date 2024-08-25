@@ -7,7 +7,7 @@ import { ConnectionMethod, OS_HOST, OS_PROXY_HOST, OSConfig, OSModule } from '..
 import { TestService } from './test.service';
 
 describe('Module and client load (spec)', () => {
-  const x: ({ description: string } & OSConfig)[] = [
+  const scenarios: ({ description: string } & OSConfig)[] = [
     {
       description: `Config: ${ConnectionMethod.Local}`,
       os: {
@@ -26,7 +26,7 @@ describe('Module and client load (spec)', () => {
     },
   ];
 
-  x.forEach(({ description, os }) =>
+  scenarios.forEach(({ description, os }) =>
     describe(`${description}`, () => {
       let module: TestingModule;
       let app: INestApplication;
@@ -84,7 +84,7 @@ describe('Module and client load (spec)', () => {
         const sampleService = app.get<TestService>(TestService);
 
         expect(sampleService).toBeInstanceOf(TestService);
-
+        expect(sampleService.getConfig()).toEqual(os);
         expect(sampleService.getClient()).toBeInstanceOf(Client);
       });
 
@@ -109,7 +109,7 @@ describe('Module and client load (spec)', () => {
         const sampleService = app.get<TestService>(TestService);
 
         expect(sampleService).toBeInstanceOf(TestService);
-
+        expect(sampleService.getConfig()).toEqual(os);
         expect(sampleService.getClient()).toBeInstanceOf(Client);
       });
 
