@@ -34,7 +34,7 @@ importers:
         version: 10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1(@nestjs/common@10.4.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.1))
       '@opensearch-project/opensearch':
         specifier: ^3.0.0-beta.5
-        version: 3.0.0-beta.5
+        version: 3.0.0-beta.6
       '@release-it/conventional-changelog':
         specifier: 8.0.1
         version: 8.0.1(release-it@17.6.0(typescript@5.5.4))
@@ -794,8 +794,8 @@ packages:
   '@octokit/types@13.5.0':
     resolution: {integrity: sha512-HdqWTf5Z3qwDVlzCrP8UJquMwunpDiMPt5er+QjGzL4hqr/vBVY/MauQgS1xWxCDT1oMx1EULyqxncdCY/NVSQ==}
 
-  '@opensearch-project/opensearch@3.0.0-beta.5':
-    resolution: {integrity: sha512-RI4WBX9ttP8FQBI8YqqorITirdFRbAF1rnuz/wuPKP82damo912YqnfyLa9A/Jy0V4PN+kcgR4q5yCR+QRPKxA==}
+  '@opensearch-project/opensearch@3.0.0-beta.6':
+    resolution: {integrity: sha512-e3EUSKLPTfJn3Ch6hpRZpwHaZFjdE4uinVH76jmVV6+H6lVIYOGvZELy0aGUJ3fC/m1wJv7wNYJG0iZpgXK4eQ==}
     engines: {node: '>=18', yarn: ^1.22.10}
 
   '@pkgjs/parseargs@0.11.0':
@@ -1266,8 +1266,8 @@ packages:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
 
-  aws4@1.13.1:
-    resolution: {integrity: sha512-u5w79Rd7SU4JaIlA/zFqG+gOiuq25q5VLyZ8E+ijJeILuTxVzZgp2CaGw/UTw6pXYN9XMO9yiqj/nEHmhTG5CA==}
+  aws4@1.13.2:
+    resolution: {integrity: sha512-lHe62zvbTB5eEABUVi/AwVh0ZKY9rMMDhmm+eeyuuUQbQ3+J+fONVQOZyj+DdrvD4BY33uYniyRJ4UJIaSKAfw==}
 
   babel-jest@29.7.0:
     resolution: {integrity: sha512-BrvGY3xZSwEcCzKvKsCi2GgHqDqsYkOP4/by5xCgIwGXQxIEh+8ew3gmrE1y7XRR6LHZIj6yLYnUi/mm2KXKBg==}
@@ -5232,9 +5232,9 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 22.2.0
 
-  '@opensearch-project/opensearch@3.0.0-beta.5':
+  '@opensearch-project/opensearch@3.0.0-beta.6':
     dependencies:
-      aws4: 1.13.1
+      aws4: 1.13.2
       debug: 4.3.6
       hpagent: 1.2.0
       json11: 1.1.2
@@ -5859,7 +5859,7 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.0.0
 
-  aws4@1.13.1: {}
+  aws4@1.13.2: {}
 
   babel-jest@29.7.0(@babel/core@7.25.2):
     dependencies:
