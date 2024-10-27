@@ -71,7 +71,7 @@
     "@opensearch-project/opensearch": "^3.0.0-beta.5",
     "@release-it/conventional-changelog": "8.0.2",
     "@tsconfig/node20": "20.1.4",
-    "@tsconfig/recommended": "1.0.7",
+    "@tsconfig/recommended": "1.0.8",
     "@tsconfig/strictest": "2.0.5",
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
