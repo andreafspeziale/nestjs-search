@@ -37,7 +37,7 @@ importers:
         version: 10.4.15(@nestjs/common@10.4.15(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.15)(@nestjs/platform-express@10.4.15)
       '@opensearch-project/opensearch':
         specifier: ^3.0.0-beta.5
-        version: 3.0.0-beta.9
+        version: 3.0.0
       '@release-it/conventional-changelog':
         specifier: 8.0.2
         version: 8.0.2(release-it@17.11.0(typescript@5.7.2))
@@ -821,8 +821,8 @@ packages:
   '@octokit/types@13.6.2':
     resolution: {integrity: sha512-WpbZfZUcZU77DrSW4wbsSgTPfKcp286q3ItaIgvSbBpZJlu6mnYXAkjZz6LVZPXkEvLIM8McanyZejKTYUHipA==}
 
-  '@opensearch-project/opensearch@3.0.0-beta.9':
-    resolution: {integrity: sha512-RJhkf9gvU0aVuZtIfGOxFNsfkLOCtJMtN9seHsA8JgftmDTm0p77tfo2uvpKMGQzRqRKbQR6HpZLtfQKtT32PA==}
+  '@opensearch-project/opensearch@3.0.0':
+    resolution: {integrity: sha512-MK4V5Vrcv4gH4/m7j0wfvw0MyWX2yk1Uv03Cq1a/kH5iG2Ry03a8nml5MhXfX1rwV6BFxHOkmsx7Pgd7u+3aZw==}
     engines: {node: '>=14', yarn: ^1.22.10}
 
   '@pkgjs/parseargs@0.11.0':
@@ -5236,7 +5236,7 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 22.2.0
 
-  '@opensearch-project/opensearch@3.0.0-beta.9':
+  '@opensearch-project/opensearch@3.0.0':
     dependencies:
       aws4: 1.13.2
       debug: 4.4.0
