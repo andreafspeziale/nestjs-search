@@ -37,7 +37,7 @@ importers:
         version: 10.4.15(@nestjs/common@10.4.15(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.15)(@nestjs/platform-express@10.4.15)
       '@opensearch-project/opensearch':
         specifier: ^3.0.0-beta.5
-        version: 3.0.0
+        version: 3.1.0
       '@release-it/conventional-changelog':
         specifier: 8.0.2
         version: 8.0.2(release-it@17.11.0(typescript@5.7.3))
@@ -821,8 +821,8 @@ packages:
   '@octokit/types@13.6.2':
     resolution: {integrity: sha512-WpbZfZUcZU77DrSW4wbsSgTPfKcp286q3ItaIgvSbBpZJlu6mnYXAkjZz6LVZPXkEvLIM8McanyZejKTYUHipA==}
 
-  '@opensearch-project/opensearch@3.0.0':
-    resolution: {integrity: sha512-MK4V5Vrcv4gH4/m7j0wfvw0MyWX2yk1Uv03Cq1a/kH5iG2Ry03a8nml5MhXfX1rwV6BFxHOkmsx7Pgd7u+3aZw==}
+  '@opensearch-project/opensearch@3.1.0':
+    resolution: {integrity: sha512-WiRZs34zY/qLccuJ/OlqduItLljnscWMGc5dt6LjVGawGzJ/RAylhKgxOQ9mJfSMnzx75O1JwbBEPmcZv0Hj2w==}
     engines: {node: '>=14', yarn: ^1.22.10}
 
   '@pkgjs/parseargs@0.11.0':
@@ -2829,8 +2829,8 @@ packages:
   json-stringify-safe@5.0.1:
     resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==}
 
-  json11@2.0.0:
-    resolution: {integrity: sha512-VuKJKUSPEJape+daTm70Nx7vdcdorf4S6LCyN2z0jUVH4UrQ4ftXo2kC0bnHpCREmxHuHqCNVPA75BjI3CB6Ag==}
+  json11@2.0.2:
+    resolution: {integrity: sha512-HIrd50UPYmP6sqLuLbFVm75g16o0oZrVfxrsY0EEys22klz8mRoWlX9KAEDOSOR9Q34rcxsyC8oDveGrCz5uLQ==}
     hasBin: true
 
   json5@1.0.2:
@@ -5240,12 +5240,12 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 22.2.0
 
-  '@opensearch-project/opensearch@3.0.0':
+  '@opensearch-project/opensearch@3.1.0':
     dependencies:
       aws4: 1.13.2
       debug: 4.4.0
       hpagent: 1.2.0
-      json11: 2.0.0
+      json11: 2.0.2
       ms: 2.1.3
       secure-json-parse: 2.7.0
     transitivePeerDependencies:
@@ -7722,7 +7722,7 @@ snapshots:
 
   json-stringify-safe@5.0.1: {}
 
-  json11@2.0.0: {}
+  json11@2.0.2: {}
 
   json5@1.0.2:
     dependencies:
