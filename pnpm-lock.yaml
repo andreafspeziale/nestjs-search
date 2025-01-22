@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@aws-sdk/credential-providers':
         specifier: ^3.629.0
-        version: 3.731.1
+        version: 3.733.0
       '@commitlint/cli':
         specifier: ^19.4.0
         version: 19.6.1(@types/node@22.5.0)(typescript@5.7.3)
@@ -177,8 +177,8 @@ packages:
     resolution: {integrity: sha512-+ynAvEGWDR5ZJFxgpwwzhvlQ3WQ7BleWXU6JwpIw3yFrD4eZEn85b8DZC1aEz7C9kb1HSV6B3gpqHqlyS6wj8g==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/credential-providers@3.731.1':
-    resolution: {integrity: sha512-Rjb14vXPa3flBJu9YDZkld0pYuR15DESMWGvCtQgGhcgpY8QH7vzxPU2C224SgYYkP0JM+7SRfadbcI5seTFuw==}
+  '@aws-sdk/credential-providers@3.733.0':
+    resolution: {integrity: sha512-ad+crUwRD5NdfXuXjC8nj0hk4SxZWrCIgTppVjBz9U2bNs17vQN1uNPoO8VzcBvKf0SApuQ1FsCPfZyoTTJF7g==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/middleware-host-header@3.731.0':
@@ -4318,7 +4318,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/credential-providers@3.731.1':
+  '@aws-sdk/credential-providers@3.733.0':
     dependencies:
       '@aws-sdk/client-cognito-identity': 3.731.1
       '@aws-sdk/core': 3.731.0
