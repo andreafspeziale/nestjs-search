@@ -30,7 +30,7 @@ export const createOSClient = (options: OSModuleOptions): Client => {
   }
 
   if (options.connectionMethod === ConnectionMethod.Credentials) {
-    return new Client({
+    return new options.client({
       ...AwsSigv4Signer({
         region: options.region,
         getCredentials: () =>
@@ -47,7 +47,7 @@ export const createOSClient = (options: OSModuleOptions): Client => {
     options.connectionMethod === ConnectionMethod.Local ||
     options.connectionMethod === ConnectionMethod.Proxy
   ) {
-    return new Client({
+    return new options.client({
       node: options.host,
     });
   }
