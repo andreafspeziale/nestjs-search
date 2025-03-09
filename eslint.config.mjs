@@ -6,13 +6,25 @@ import tseslint from 'typescript-eslint';
 import * as importPlugin from 'eslint-plugin-import';
 import unusedImports from "eslint-plugin-unused-imports";
 
-
 export default tseslint.config(
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{ts}'],
     ignores: ['eslint.config.mjs'],
     extends: [importPlugin.flatConfigs?.recommended, importPlugin.flatConfigs?.typescript],
-    plugins: { 'unused-imports': unusedImports }
+    plugins: { 'unused-imports': unusedImports },
+    rules: {
+      'import/namespace': 0,
+      'import/no-extraneous-dependencies': 2,
+      'import/order': [
+        2,
+        {
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          'newlines-between': 'never',
+        },
+      ],
+      //
+      'unused-imports/no-unused-imports': 2,
+    }
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
@@ -48,18 +60,6 @@ export default tseslint.config(
       '@typescript-eslint/no-inferrable-types': 0,
       '@typescript-eslint/no-shadow': 1,
       '@typescript-eslint/no-unused-vars': [1, { ignoreRestSiblings: true }],
-      //
-      'import/namespace': 0,
-      'import/no-extraneous-dependencies': 2,
-      'import/order': [
-        2,
-        {
-          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-          'newlines-between': 'never',
-        },
-      ],
-      //
-      'unused-imports/no-unused-imports': 2,
     },
   },
 );
