@@ -1,11 +1,18 @@
 import { fromZodError } from 'zod-validation-error';
-import { osSchema } from '../zod';
-import {
-  ConnectionMethod,
-  OS_HOST,
-  SERVICE_ACCOUNT_CONNECTION_PROPS,
-  CREDENTIALS_CONNECTION_PROPS,
-} from '../';
+import { buildOSSchemas } from '../zod';
+import { ConnectionMethod, OS_HOST } from '../';
+
+export const SERVICE_ACCOUNT_CONNECTION_PROPS = [
+  'AWS_REGION',
+  'AWS_ROLE_ARN',
+  'AWS_WEB_IDENTITY_TOKEN_FILE',
+] as const;
+
+export const CREDENTIALS_CONNECTION_PROPS = [
+  'AWS_REGION',
+  'AWS_ACCESS_KEY_ID',
+  'AWS_SECRET_ACCESS_KEY',
+] as const;
 
 describe('Zod schema (spec)', () => {
   [
@@ -84,7 +91,7 @@ describe('Zod schema (spec)', () => {
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
       it(`${description}`, () => {
-        const r = osSchema.safeParse(env);
+        const r = buildOSSchemas().osSchema.safeParse(env);
         expect(r.success).toBe(false);
 
         if (!r.success) {
@@ -93,6 +100,7 @@ describe('Zod schema (spec)', () => {
             prefixSeparator: '',
           });
 
+          expect(expected.length).toBe(details.length);
           details.forEach((e, i) => expect(e.message).toBe(expected[i]?.message));
         }
       }),

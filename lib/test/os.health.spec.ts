@@ -1,68 +1,52 @@
-import { INestApplication } from '@nestjs/common';
 import { Client } from '@opensearch-project/opensearch';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
-import { HealthCheckError } from '@nestjs/terminus';
+import { TerminusModule } from '@nestjs/terminus';
 import { getOSClientToken } from '../os.utils';
 import { OSHealthIndicator } from '../health';
-import { ConnectionMethod, OSConfig, OSModule, OS_HOST } from '../';
+import { ConnectionMethod, OSModule, OS_HOST } from '../';
 
 describe('Health (spec)', () => {
   let module: TestingModule;
-  let app: INestApplication;
   let openSearchHealthIndicator: OSHealthIndicator;
   let osClient: Client;
-
-  const returnConfig = (): OSConfig => ({
-    os: { host: OS_HOST, connectionMethod: ConnectionMethod.Local, client: Client },
-  });
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
       imports: [
-        ConfigModule.forRoot({
-          isGlobal: true,
-          load: [returnConfig],
-        }),
-        OSModule.forRootAsync({
-          useFactory: (configService: ConfigService<OSConfig, true>) => configService.get('os'),
-          inject: [ConfigService],
-        }),
+        OSModule.forRoot({ host: OS_HOST, connectionMethod: ConnectionMethod.Local }),
+        TerminusModule,
       ],
       providers: [OSHealthIndicator],
     }).compile();
 
-    app = module.createNestApplication();
-    await app.init();
-
-    openSearchHealthIndicator = app.get<OSHealthIndicator>(OSHealthIndicator);
-    osClient = app.get<Client>(getOSClientToken());
+    openSearchHealthIndicator = module.get<OSHealthIndicator>(OSHealthIndicator);
+    osClient = module.get<Client>(getOSClientToken());
   });
 
   it('Should throw HealthCheckError', async () => {
-    const connectionException = new HealthCheckError('Error while getting OpenSearch health', {
-      opensearch: { status: 'down', message: 'Connection Error' },
+    const message = 'Connection Error';
+    const osClientCat = osClient.cat;
+    jest.spyOn(osClientCat, 'health').mockImplementation(() => {
+      throw new Error(message);
     });
 
-    await expect(openSearchHealthIndicator.isHealthy('opensearch')).rejects.toEqual(
-      connectionException,
-    );
+    const expected = { opensearch: { status: 'down', message: message } };
+    const received = await openSearchHealthIndicator.isHealthy('opensearch');
+
+    expect(received).toStrictEqual(expected);
   });
 
   it('Should return expected status up', async () => {
     const osClientCat = osClient.cat;
     jest.spyOn(osClientCat, 'health').mockImplementation();
 
-    await expect(openSearchHealthIndicator.isHealthy('opensearch')).resolves.toEqual({
-      opensearch: { status: 'up' },
-    });
+    const expected = { opensearch: { status: 'up' } };
+    const received = await openSearchHealthIndicator.isHealthy('opensearch');
+
+    expect(received).toStrictEqual(expected);
   });
 
   afterEach(() => {
     jest.clearAllMocks();
-  });
-
-  afterAll(async () => {
-    await app.close();
   });
 });

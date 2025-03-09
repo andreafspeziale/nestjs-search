@@ -1,5 +1,4 @@
 import { Client } from '@opensearch-project/opensearch';
-// eslint-disable-next-line import/no-unresolved
 import { AwsSigv4Signer } from '@opensearch-project/opensearch/aws';
 import { ConnectionMethod, OSModuleOptions } from './os.interfaces';
 import { OS_CLIENT_TOKEN, OS_MODULE_OPTIONS_TOKEN } from './os.constants';
@@ -9,7 +8,7 @@ export const getOSClientToken = (): string => OS_CLIENT_TOKEN;
 
 export const createOSClient = (options: OSModuleOptions): Client => {
   if (options.connectionMethod === ConnectionMethod.ServiceAccount) {
-    return new options.client({
+    return new Client({
       ...AwsSigv4Signer({
         region: options.region,
         getCredentials: async () => {
@@ -30,7 +29,7 @@ export const createOSClient = (options: OSModuleOptions): Client => {
   }
 
   if (options.connectionMethod === ConnectionMethod.Credentials) {
-    return new options.client({
+    return new Client({
       ...AwsSigv4Signer({
         region: options.region,
         getCredentials: () =>
@@ -47,7 +46,7 @@ export const createOSClient = (options: OSModuleOptions): Client => {
     options.connectionMethod === ConnectionMethod.Local ||
     options.connectionMethod === ConnectionMethod.Proxy
   ) {
-    return new options.client({
+    return new Client({
       node: options.host,
     });
   }

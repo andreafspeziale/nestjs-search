@@ -37,10 +37,6 @@ pnpm add @andreafspeziale/nestjs-search
 
 ## Peer Dependencies
 
-In order to create `nestjs-search` I had to address multiple challenges which lead me to the current module and features setup.
-
-The first challenge was an annoying Tyepscript inference issue. Returning inferenced `@opensearch-project/opensearch` client return types from providers functions was raising a "not portable types" error. I unsuccessfully tried to fix it by exporting all the client types from `nestjs-search`, so I ended up asking to the consumer to install the opensearch client. I also decided to ask to the consumer to "statically" add the `Client` class implementation to the module option as a convenient way to ensure `@opensearch-project/opensearch` installation along with other benefits.
-
 `@nestjs/common` and `reflect-metadata` are required peer dependencies which I'm pretty sure 99% of NestJS applications out there have already installed.
 
 I managed to setup `@aws-sdk/credential-providers` as optional using `dynamic imports` and throwing an error if you try to use the `ServiceAccount` connection method without installing it.
@@ -48,9 +44,7 @@ I managed to setup `@aws-sdk/credential-providers` as optional using `dynamic im
 In addition to the module and the injectable client you can import and use the following features as soon as you add the related peer dependency:
 
 - exporting an `OSHealthIndicator` for your server which requires `@nestjs/terminus`
-- environment variables parsers/validators:
-  - eventually using and requiring `zod`
-  - eventually using and requiring `class-transformer` and `class-validator`
+- environment variables parsers/validators (eventually using and requiring `zod`)
 
 Check the next chapters for more info of the above mentioned features.
 
@@ -58,14 +52,11 @@ Check the next chapters for more info of the above mentioned features.
 
 - `@nestjs/common`
 - `reflect-metadata`
-- `@opensearch-project/opensearch`
 
 ### Optional
 
 - `@aws-sdk/credential-providers`
 - `@nestjs/terminus`
-- `class-transformer`
-- `class-validator`
 - `zod`
 
 ## How to use?
@@ -85,13 +76,11 @@ import {
   OSModule,
   OS_HOST,
 } from '@andreafspeziale/nestjs-search';
-import { Client } from '@opensearch-project/opensearch';
 
 @Module({
   imports: [
     OSModule.forRoot({
       host: OS_HOST,
-      client: Client,
       connectionMethod: ConnectionMethod.Local,
     }),
   ],
@@ -164,14 +153,13 @@ export type Config = OSConfig<Local | ServiceAccount> & ....;
 
 ```ts
 import { Injectable } from '@nestjs/common';
-import { InjectOS, InjectOSModuleOptions, OSModuleOptions } from '@andreafspeziale/nestjs-search';
-import { Client } from '@opensearch-project/opensearch';
+import { InjectOS, InjectOSModuleOptions, OSModuleOptions, OSTypes } from '@andreafspeziale/nestjs-search';
 
 @Injectable()
 export class SamplesService {
   constructor(
     @InjectOSModuleOptions() private readonly osModuleOptions: OSModuleOptions, // Showcase purposes
-    @InjectOS() private readonly osClient: Client
+    @InjectOS() private readonly osClient: OSTypes.Client
   ) {}
 
   ....
@@ -179,6 +167,8 @@ export class SamplesService {
 ```
 
 ### Health
+
+> NestJS 11 slightly changed [custom heath indicators](https://docs.nestjs.com/migration-guide#terminus-module). `OSHealthIndicator` and `OldOSHealthIndicator` are at your disposal
 
 I usually expose an `/healthz` controller from my microservices in order to check third parties connection.
 
@@ -240,155 +230,9 @@ So let's pretend you are goingo to parse your environment variables using the `n
 
 #### Zod
 
+> I recently simplified the lib by exposing only Zod as environment variables parsing toolkit
+
 Check my <a href="https://github.com/andreafspeziale/os-cli" target="blank">os-cli</a> as `zod` environment variables parsing example.
-
-#### Class transformer/validator
-
-When:
-
-- using `class-transformer/class-validator` to parse environment variables
-- customizing `OSConfig` with generics
-
-you'll need to tweak a little bit parsing/validation flow.
-
-`src/config/config.interfaces.ts`
-
-```ts
-import {
-  Local,
-  OSConfig,
-  ServiceAccount,
-} from '@andreafspeziale/nestjs-search';
-import { IOSLocalSchema, IOSServiceAccountSchema } from '@andreafspeziale/nestjs-search/dist/class-validator';
-
-....
-// Your application config supporting only "Local" and "ServiceAccount" connection methods
-export type Config = SomeLocalConfig & OSConfig<Local | ServiceAccount> & SomeOtherConfig;
-
-....
-// Shape of your application the ENV variables
-export type ENVSchema = ISomeLocalSchema &
-  ISomeOtherSchema &
-  (IOSLocalSchema | IOSServiceAccountSchema);
-```
-
-`src/config/config.utils.ts`
-
-```ts
-import {
-  instanceToPlain,
-  plainToInstance,
-  ClassConstructor,
-} from 'class-transformer';
-import { validateSync, ValidationError } from 'class-validator';
-import { OSLocalSchema, OSServiceAccountSchema } from '@andreafspeziale/nestjs-search/dist/class-validator';
-import { ConfigException } from './config.exceptions';
-import { Config, ENVSchema } from './config.interfaces';
-import { SomeLocalSchema, SomeOtherSchema } from './config.schema';
-
-// You'll need to treat OSLocalSchema and OSServiceAccountSchema as OR chained schemas
-export const parse = (e: Record<string, unknown>): ENVSchema => {
-  let r = {};
-
-  const schemaGroups: ClassConstructor<
-    SomeLocalSchema | OSLocalSchema | OSServiceAccountSchema | SomeOtherSchema
-  >[][] = [
-    [SomeLocalSchema],
-    [OSLocalSchema, OSServiceAccountSchema],
-    [SomeOtherSchema],
-  ];
-
-  for (const schemaGroup of schemaGroups) {
-    const groupValidationErrors: ValidationError[][] = [];
-
-    for (const schema of schemaGroup) {
-      const i = plainToInstance(schema, e, {
-        enableImplicitConversion: true,
-      });
-
-      const errors = validateSync(i, {
-        whitelist: true,
-      });
-
-      if (errors.length) {
-        groupValidationErrors.push(errors);
-      } else {
-        r = {
-          ...i,
-          ...r,
-        };
-      }
-    }
-
-    if (groupValidationErrors.length === schemaGroup.length) {
-      const details: string[] = [];
-
-      for (const groupValidation of groupValidationErrors.flat()) {
-        details.push(
-          ...Object.values(groupValidation.constraints || 'Unknown constraint'),
-        );
-      }
-
-      throw new ConfigException({
-        message: 'Error validating ENV variables',
-        details,
-      });
-    }
-  }
-
-  return instanceToPlain(r, { exposeUnsetFields: true }) as ENVSchema;
-};
-
-export const mapConfig = (e: ENVSchema): Config => {
-  ....
-  if (e.OS_CONNECTION_METHOD === ConnectionMethod.ServiceAccount) {
-    return {
-      os: {
-        host: e.OS_HOST,
-        client: Client,
-        connectionMethod: e.OS_CONNECTION_METHOD,
-        region: e.AWS_REGION as string,
-        credentials: {
-          arn: e.AWS_ROLE_ARN as string,
-          tokenFile: e.AWS_WEB_IDENTITY_TOKEN_FILE as string,
-        },
-      },
-      ...baseConfig,
-    };
-  }
-
-  return {
-    os: {
-      host: e.OS_HOST,
-      client: Client,
-      connectionMethod: e.OS_CONNECTION_METHOD,
-    },
-    ...baseConfig,
-  };
-}
-```
-
-`src/core/core.module.ts`
-
-```ts
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { OSModule } from '@andreafspeziale/nestjs-search';
-import { parse, mapConfig, Config } from '../config';
-
-@Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      validate: (c) => mapConfig(parse(c)),
-    }),
-    OSModule.forRootAsync({
-      useFactory: (cs: ConfigService<Config, true>) => cs.get<Config['os']>('os'),
-      inject: [ConfigService],
-    }),
-  ],
-})
-export class CoreModule {}
-```
 
 ## Test
 
