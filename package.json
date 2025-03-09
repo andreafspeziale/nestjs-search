@@ -1,6 +1,6 @@
 {
   "name": "@andreafspeziale/nestjs-search",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An OpenSearch module for Nest - modern, fast, powerful node.js web framework",
   "author": "Andrea Francesco Speziale",
   "private": false,

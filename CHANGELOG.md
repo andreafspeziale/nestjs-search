@@ -1,5 +1,18 @@
 
 
+## [1.1.1](https://github.com/andreafspeziale/nestjs-search/compare/1.1.0...1.1.1) (2025-03-09)
+
+
+### Bug Fixes
+
+* ackchyually client in utils ([a7228ab](https://github.com/andreafspeziale/nestjs-search/commit/a7228ab6f8ba4ab2219c7dcbb2f6bb4b840056f9))
+
+
+### Miscellaneous
+
+* update commitlint monorepo to v19.8.0 ([7db5ffe](https://github.com/andreafspeziale/nestjs-search/commit/7db5ffec87c998d5fc4d31b4483e417a23393991))
+* update pnpm to v9.15.8 ([8a1029a](https://github.com/andreafspeziale/nestjs-search/commit/8a1029a5aa25e7a5bd92ccdacd07a4aafdc3879b))
+
 ## [1.1.0](https://github.com/andreafspeziale/nestjs-search/compare/1.0.0...1.1.0) (2025-03-09)
 
 
