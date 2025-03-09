@@ -33,10 +33,11 @@ export const createOSClient = (options: OSModuleOptions): Client => {
     return new Client({
       ...AwsSigv4Signer({
         region: options.region,
-        getCredentials: async () => ({
-          accessKeyId: options.credentials.accessKeyId,
-          secretAccessKey: options.credentials.secretAccessKey,
-        }),
+        getCredentials: () =>
+          Promise.resolve({
+            accessKeyId: options.credentials.accessKeyId,
+            secretAccessKey: options.credentials.secretAccessKey,
+          }),
       }),
       node: options.host,
     });

@@ -83,7 +83,7 @@ describe('Zod schema (spec)', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const r = osSchema.safeParse(env);
         expect(r.success).toBe(false);
 

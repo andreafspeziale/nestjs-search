@@ -58,7 +58,7 @@ describe('Health (spec)', () => {
     });
   });
 
-  afterEach(async () => {
+  afterEach(() => {
     jest.clearAllMocks();
   });
 

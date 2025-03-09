@@ -31,7 +31,7 @@ describe('OSLocalSchema (spec)', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const envSchemaInstance = plainToInstance(OSLocalSchema, env);
 
         const errors = validateSync(envSchemaInstance);
@@ -65,7 +65,7 @@ describe('OSProxySchema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const envSchemaInstance = plainToInstance(OSProxySchema, env);
 
         const errors = validateSync(envSchemaInstance);
@@ -167,7 +167,7 @@ describe('OSServiceAccountSchema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const envSchemaInstance = plainToInstance(OSServiceAccountSchema, env);
 
         const errors = validateSync(envSchemaInstance);
@@ -269,7 +269,7 @@ describe('OSCredentialsSchema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const envSchemaInstance = plainToInstance(OSCredentialsSchema, env);
 
         const errors = validateSync(envSchemaInstance);
@@ -393,7 +393,7 @@ describe('OSSchema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const envSchemaInstance = plainToInstance(OSSchema, env);
 
         const errors = validateSync(envSchemaInstance);
