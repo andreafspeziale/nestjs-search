@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { Client } from '@opensearch-project/opensearch';
 import { HealthIndicator, HealthIndicatorResult, HealthCheckError } from '@nestjs/terminus';
-import { InjectOSClient } from '../os.decorators';
+import { InjectOS } from '../os.decorators';
 
 @Injectable()
 export class OSHealthIndicator extends HealthIndicator {
-  constructor(@InjectOSClient() private readonly osClient: Client) {
+  constructor(@InjectOS() private readonly osClient: Client) {
     super();
   }
 

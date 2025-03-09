@@ -4,14 +4,14 @@ import {
   OSCredentialsSchema,
   OSLocalSchema,
   OSProxySchema,
-  OSSChema,
+  OSSchema,
   OSServiceAccountSchema,
 } from '../class-validator';
 import { ConnectionMethod } from '../os.interfaces';
 import { OS_HOST } from '../os.defaults';
 import { CREDENTIALS_CONNECTION_PROPS, SERVICE_ACCOUNT_CONNECTION_PROPS } from '../os.constants';
 
-describe('OSLocalSchema', () => {
+describe('OSLocalSchema (spec)', () => {
   [
     {
       description: `Should fail if OS_CONNECTION_METHOD is different than "${ConnectionMethod.Local}"`,
@@ -31,7 +31,7 @@ describe('OSLocalSchema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const envSchemaInstance = plainToInstance(OSLocalSchema, env);
 
         const errors = validateSync(envSchemaInstance);
@@ -65,7 +65,7 @@ describe('OSProxySchema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const envSchemaInstance = plainToInstance(OSProxySchema, env);
 
         const errors = validateSync(envSchemaInstance);
@@ -167,7 +167,7 @@ describe('OSServiceAccountSchema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const envSchemaInstance = plainToInstance(OSServiceAccountSchema, env);
 
         const errors = validateSync(envSchemaInstance);
@@ -269,7 +269,7 @@ describe('OSCredentialsSchema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const envSchemaInstance = plainToInstance(OSCredentialsSchema, env);
 
         const errors = validateSync(envSchemaInstance);
@@ -283,7 +283,7 @@ describe('OSCredentialsSchema', () => {
   );
 });
 
-describe('OSSChema', () => {
+describe('OSSchema', () => {
   [
     {
       description: 'Should fail if OS_HOST is set',
@@ -393,8 +393,8 @@ describe('OSSChema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
-        const envSchemaInstance = plainToInstance(OSSChema, env);
+      it(`${description}`, () => {
+        const envSchemaInstance = plainToInstance(OSSchema, env);
 
         const errors = validateSync(envSchemaInstance);
 

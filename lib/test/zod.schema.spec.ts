@@ -7,7 +7,7 @@ import {
   CREDENTIALS_CONNECTION_PROPS,
 } from '../';
 
-describe('Zod schema', () => {
+describe('Zod schema (spec)', () => {
   [
     {
       description: 'Should fail if OS_CONNECTION_METHOD is missing',
@@ -83,7 +83,7 @@ describe('Zod schema', () => {
     },
   ].forEach(({ description, scenarios }) =>
     scenarios.forEach(({ env, expected }) =>
-      it(`${description}`, async () => {
+      it(`${description}`, () => {
         const r = osSchema.safeParse(env);
         expect(r.success).toBe(false);
 

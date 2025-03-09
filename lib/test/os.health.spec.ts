@@ -7,7 +7,7 @@ import { getOSClientToken } from '../os.utils';
 import { OSHealthIndicator } from '../health';
 import { ConnectionMethod, OSConfig, OSModule, OS_HOST } from '../';
 
-describe('Health', () => {
+describe('Health (spec)', () => {
   let module: TestingModule;
   let app: INestApplication;
   let openSearchHealthIndicator: OSHealthIndicator;
@@ -58,7 +58,7 @@ describe('Health', () => {
     });
   });
 
-  afterEach(async () => {
+  afterEach(() => {
     jest.clearAllMocks();
   });
 

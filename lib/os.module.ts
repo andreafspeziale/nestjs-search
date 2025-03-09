@@ -19,7 +19,7 @@ export class OSModule {
     return {
       module: OSModule,
       providers: [optionsProvider, clientProvider],
-      exports: [clientProvider],
+      exports: [optionsProvider, clientProvider],
     };
   }
 
@@ -37,7 +37,7 @@ export class OSModule {
     return {
       module: OSModule,
       providers: [...this.createAsyncProviders(options), clientProvider],
-      exports: [clientProvider],
+      exports: [...this.createAsyncProviders(options), clientProvider],
     };
   }
 

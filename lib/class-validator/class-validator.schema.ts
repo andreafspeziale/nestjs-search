@@ -70,7 +70,7 @@ export class OSCredentialsSchema implements IOSCredentialsSchema {
   AWS_SECRET_ACCESS_KEY!: string;
 }
 
-export class OSSChema implements IOSSchema {
+export class OSSchema implements IOSSchema {
   @IsNotEmpty()
   @IsString()
   OS_HOST!: string;
@@ -93,3 +93,5 @@ export class OSSChema implements IOSSchema {
   @Validate(IsOSConnectionInfoComplete)
   AWS_SECRET_ACCESS_KEY?: string;
 }
+
+export const OSSChema = OSSchema;
