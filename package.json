@@ -93,7 +93,7 @@
     "release-it": "^17.6.0",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.2.6",
-    "typescript": "<5.8.0",
+    "typescript": "<5.8.3",
     "typescript-eslint": "^8.25.0",
     "zod": "^3.24.2",
     "zod-validation-error": "^3.4.0"
