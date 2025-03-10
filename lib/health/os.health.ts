@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { Client } from '@opensearch-project/opensearch';
-import { HealthIndicator, HealthIndicatorResult, HealthCheckError } from '@nestjs/terminus';
+import { HealthIndicatorResult, HealthIndicatorService } from '@nestjs/terminus';
 import { InjectOS } from '../os.decorators';
 
 @Injectable()
-export class OSHealthIndicator extends HealthIndicator {
-  constructor(@InjectOS() private readonly osClient: Client) {
-    super();
-  }
+export class OSHealthIndicator {
+  constructor(
+    @InjectOS() private readonly osClient: Client,
+    private readonly healthIndicatorService: HealthIndicatorService,
+  ) {}
 
   async isHealthy(key: string): Promise<HealthIndicatorResult> {
+    const indicator = this.healthIndicatorService.check(key);
+
     try {
       await this.osClient.cat.health();
     } catch (e) {
-      throw new HealthCheckError(
-        'Error while getting OpenSearch health',
-        this.getStatus(key, false, {
-          message: (e as Error).message,
-        }),
-      );
+      return indicator.down({
+        message: (e as Error).message,
+      });
     }
 
-    return this.getStatus(key, true);
+    return indicator.up();
   }
 }
