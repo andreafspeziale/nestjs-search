@@ -1,5 +1,30 @@
 
 
+## [2.0.0](https://github.com/andreafspeziale/nestjs-search/compare/1.1.1...2.0.0) (2025-03-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* v2
+
+### Features
+
+* v2 ([d103a79](https://github.com/andreafspeziale/nestjs-search/commit/d103a7942315f175d330079b333584f2d9685001))
+
+
+### Miscellaneous
+
+* update dependency @aws-sdk/credential-providers to v3.768.0 ([#150](https://github.com/andreafspeziale/nestjs-search/issues/150)) ([6ef9187](https://github.com/andreafspeziale/nestjs-search/commit/6ef91879320b83e397b2ef9f0b62f50a87c15d38))
+* update dependency eslint to v9.22.0 ([#142](https://github.com/andreafspeziale/nestjs-search/issues/142)) ([bbc5bd0](https://github.com/andreafspeziale/nestjs-search/commit/bbc5bd07b5e200e7fb1a141bf74319712926b808))
+* update dependency eslint-config-prettier to v10.1.1 ([#143](https://github.com/andreafspeziale/nestjs-search/issues/143)) ([54c2a5e](https://github.com/andreafspeziale/nestjs-search/commit/54c2a5e082edaf45a65d8548b98ef42992aedea2))
+* update dependency lint-staged to v15.5.0 ([#149](https://github.com/andreafspeziale/nestjs-search/issues/149)) ([c176ead](https://github.com/andreafspeziale/nestjs-search/commit/c176ead469fa0084b2c9902d5fe92ade66b060dc))
+* update dependency typescript to <5.8.3 ([#144](https://github.com/andreafspeziale/nestjs-search/issues/144)) ([3edc628](https://github.com/andreafspeziale/nestjs-search/commit/3edc62868838f573d86e3a069e38e2505be312bb))
+* update dependency typescript to v5.8.2 ([f3abfe6](https://github.com/andreafspeziale/nestjs-search/commit/f3abfe67b42c7bd878c7aaa436c2fba7862b6cb4))
+* update dependency typescript-eslint to v8.26.0 ([#145](https://github.com/andreafspeziale/nestjs-search/issues/145)) ([d391da4](https://github.com/andreafspeziale/nestjs-search/commit/d391da4393f906b4041342945d106eb599ccc0c1))
+* update dependency typescript-eslint to v8.26.1 ([#148](https://github.com/andreafspeziale/nestjs-search/issues/148)) ([57f5e5c](https://github.com/andreafspeziale/nestjs-search/commit/57f5e5c67c1181e27dbbc76f8d2e3b23fd66cd36))
+* update nest monorepo to v11.0.12 ([#151](https://github.com/andreafspeziale/nestjs-search/issues/151)) ([2fe16c7](https://github.com/andreafspeziale/nestjs-search/commit/2fe16c7afa13190efc4d98b0269cb596797822cb))
+* update pnpm to v9.15.9 ([41e137f](https://github.com/andreafspeziale/nestjs-search/commit/41e137fa99dd768dde5c32d27747651d64486f4f))
+
 ## [1.1.1](https://github.com/andreafspeziale/nestjs-search/compare/1.1.0...1.1.1) (2025-03-09)
 
 
