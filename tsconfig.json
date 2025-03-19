@@ -5,6 +5,7 @@
     "@tsconfig/node20/tsconfig.json"
   ],
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": true,
     "declaration": true,
