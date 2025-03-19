@@ -1,10 +1,13 @@
-import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Client } from '@opensearch-project/opensearch';
 import { getOSClientToken } from '../os.utils';
 import { ConnectionMethod, OS_HOST, OS_PROXY_HOST, OSConfig, OSModule } from '../';
 import { TestService } from './test.service';
+
+interface Config extends OSConfig {
+  someRandomConfigKey: string;
+}
 
 describe('Module and client load (spec)', () => {
   const scenarios: ({ description: string } & OSConfig)[] = [
@@ -13,7 +16,6 @@ describe('Module and client load (spec)', () => {
       os: {
         host: OS_HOST,
         connectionMethod: ConnectionMethod.Local,
-        client: Client,
       },
     },
     {
@@ -21,7 +23,6 @@ describe('Module and client load (spec)', () => {
       os: {
         host: OS_PROXY_HOST,
         connectionMethod: ConnectionMethod.Proxy,
-        client: Client,
       },
     },
   ];
@@ -29,20 +30,16 @@ describe('Module and client load (spec)', () => {
   scenarios.forEach(({ description, os }) =>
     describe(`${description}`, () => {
       let module: TestingModule;
-      let app: INestApplication;
 
-      const returnConfig = (): OSConfig => ({ os });
+      const returnConfig = (): Config => ({ os, someRandomConfigKey: 'someRandomConfigValue' });
 
       it('Should create the expected OpenSearchModule instance using forRoot', async () => {
         module = await Test.createTestingModule({
           imports: [OSModule.forRoot(os)],
         }).compile();
 
-        app = module.createNestApplication();
-        await app.init();
-
-        const osModule = app.get<OSModule>(OSModule);
-        const osClient = app.get<Client>(getOSClientToken());
+        const osModule = module.get<OSModule>(OSModule);
+        const osClient = module.get<Client>(getOSClientToken());
 
         expect(osModule).toBeInstanceOf(OSModule);
         expect(osClient).toBeInstanceOf(Client);
@@ -56,17 +53,14 @@ describe('Module and client load (spec)', () => {
               load: [returnConfig],
             }),
             OSModule.forRootAsync({
-              useFactory: (configService: ConfigService<OSConfig, true>) => configService.get('os'),
+              useFactory: (configService: ConfigService<Config, true>) => configService.get('os'),
               inject: [ConfigService],
             }),
           ],
         }).compile();
 
-        app = module.createNestApplication();
-        await app.init();
-
-        const osModule = app.get<OSModule>(OSModule);
-        const osClient = app.get<Client>(getOSClientToken());
+        const osModule = module.get<OSModule>(OSModule);
+        const osClient = module.get<Client>(getOSClientToken());
 
         expect(osModule).toBeInstanceOf(OSModule);
         expect(osClient).toBeInstanceOf(Client);
@@ -78,10 +72,7 @@ describe('Module and client load (spec)', () => {
           providers: [TestService],
         }).compile();
 
-        app = module.createNestApplication();
-        await app.init();
-
-        const sampleService = app.get<TestService>(TestService);
+        const sampleService = module.get<TestService>(TestService);
 
         expect(sampleService).toBeInstanceOf(TestService);
         expect(sampleService.getConfig()).toEqual(os);
@@ -96,25 +87,18 @@ describe('Module and client load (spec)', () => {
               load: [returnConfig],
             }),
             OSModule.registerAsync({
-              useFactory: (configService: ConfigService<OSConfig, true>) => configService.get('os'),
+              useFactory: (configService: ConfigService<Config, true>) => configService.get('os'),
               inject: [ConfigService],
             }),
           ],
           providers: [TestService],
         }).compile();
 
-        app = module.createNestApplication();
-        await app.init();
-
-        const sampleService = app.get<TestService>(TestService);
+        const sampleService = module.get<TestService>(TestService);
 
         expect(sampleService).toBeInstanceOf(TestService);
         expect(sampleService.getConfig()).toEqual(os);
         expect(sampleService.getClient()).toBeInstanceOf(Client);
-      });
-
-      afterEach(async () => {
-        await app.close();
       });
     }),
   );

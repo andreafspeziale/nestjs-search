@@ -38,9 +38,6 @@
     "@aws-sdk/credential-providers": "^3.629.0",
     "@nestjs/common": "^10.0.0 || ^11.0.0",
     "@nestjs/terminus": "^10.0.0 || ^11.0.0",
-    "@opensearch-project/opensearch": "^3.0.0-beta.5",
-    "class-transformer": "^0.5.1",
-    "class-validator": "^0.14.1",
     "reflect-metadata": "^0.2.0",
     "zod": "^3.0.0"
   },
@@ -51,34 +48,28 @@
     "@nestjs/terminus": {
       "optional": true
     },
-    "class-transformer": {
-      "optional": true
-    },
-    "class-validator": {
-      "optional": true
-    },
     "zod": {
       "optional": true
     }
+  },
+  "dependencies": {
+    "@opensearch-project/opensearch": "^3.4.0"
   },
   "devDependencies": {
     "@aws-sdk/credential-providers": "^3.629.0",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/js": "^9.22.0",
     "@nestjs/common": "^11.0.10",
     "@nestjs/config": "^4.0.0",
     "@nestjs/core": "^11.0.10",
-    "@nestjs/platform-express": "^11.0.10",
     "@nestjs/terminus": "^11.0.0",
     "@nestjs/testing": "^11.0.10",
-    "@opensearch-project/opensearch": "^3.0.0-beta.5",
     "@release-it/conventional-changelog": "8.0.2",
     "@tsconfig/node20": "20.1.4",
     "@tsconfig/recommended": "1.0.8",
     "@tsconfig/strictest": "2.0.5",
     "@types/jest": "^29.5.14",
-    "class-transformer": "^0.5.1",
-    "class-validator": "^0.14.1",
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
@@ -93,7 +84,7 @@
     "release-it": "^17.6.0",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.2.6",
-    "typescript": "<5.8.0",
+    "typescript": "<5.8.3",
     "typescript-eslint": "^8.25.0",
     "zod": "^3.24.2",
     "zod-validation-error": "^3.4.0"
@@ -107,10 +98,10 @@
     ]
   },
   "lint-staged": {
-    "*.ts": "npm run lint"
+    "*.ts": "pnpm lint"
   },
   "engines": {
     "node": ">=20.16.0"
   },
-  "packageManager": "pnpm@9.15.8"
+  "packageManager": "pnpm@9.15.9"
 }

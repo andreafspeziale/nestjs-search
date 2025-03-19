@@ -1,5 +1,8 @@
-import { ModuleMetadata, Type } from '@nestjs/common';
-import { Client, ClientOptions } from '@opensearch-project/opensearch';
+import * as OSTypes from '@opensearch-project/opensearch';
+import { Type } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+
+export type { OSTypes };
 
 export enum ConnectionMethod {
   Local = 'local',
@@ -10,19 +13,16 @@ export enum ConnectionMethod {
 
 export interface Local {
   host: string;
-  client: new (opts: ClientOptions) => Client;
   connectionMethod: ConnectionMethod.Local;
 }
 
 export interface Proxy {
   host: string;
-  client: new (opts: ClientOptions) => Client;
   connectionMethod: ConnectionMethod.Proxy;
 }
 
 export interface ServiceAccount {
   host: string;
-  client: new (opts: ClientOptions) => Client;
   connectionMethod: ConnectionMethod.ServiceAccount;
   region: string;
   credentials: {
@@ -33,7 +33,6 @@ export interface ServiceAccount {
 
 export interface Credentials {
   host: string;
-  client: new (opts: ClientOptions) => Client;
   connectionMethod: ConnectionMethod.Credentials;
   region: string;
   credentials: {
@@ -60,13 +59,9 @@ export interface OSConfig<
   os: OSModuleOptions<T>;
 }
 
-export interface OSModuleOptionsFactory {
-  createOSModuleOptions(): Promise<OSModuleOptions> | OSModuleOptions;
-}
-
-export interface OSModuleAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
-  inject?: any[];
-  useClass?: Type<OSModuleOptionsFactory>;
-  useExisting?: Type<OSModuleOptionsFactory>;
-  useFactory?: (...args: any[]) => Promise<OSModuleOptions> | OSModuleOptions;
+export interface OSModuleAsyncOptions {
+  inject: [Type<ConfigService<OSConfig, true>>];
+  useFactory: (
+    ...configService: [ConfigService<OSConfig, true>]
+  ) => Promise<OSModuleOptions> | OSModuleOptions;
 }
