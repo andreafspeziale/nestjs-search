@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@opensearch-project/opensearch':
         specifier: ^3.4.0
-        version: 3.5.0
+        version: 3.5.1
     devDependencies:
       '@aws-sdk/credential-providers':
         specifier: ^3.629.0
@@ -832,8 +832,8 @@ packages:
   '@octokit/types@13.6.2':
     resolution: {integrity: sha512-WpbZfZUcZU77DrSW4wbsSgTPfKcp286q3ItaIgvSbBpZJlu6mnYXAkjZz6LVZPXkEvLIM8McanyZejKTYUHipA==}
 
-  '@opensearch-project/opensearch@3.5.0':
-    resolution: {integrity: sha512-Xz3W7Sle7BRgfdrsjLtboibXx7ZFHChjEoM5w17tgee6tu+q89H1XUNyJYCfE146RB5rwTunfD0eRHhIZImIKQ==}
+  '@opensearch-project/opensearch@3.5.1':
+    resolution: {integrity: sha512-6bf+HcuERzAtHZxrm6phjref54ABse39BpkDie/YO3AUFMCBrb3SK5okKSdT5n3+nDRuEEQLhQCl0RQV3s1qpA==}
     engines: {node: '>=14', yarn: ^1.22.10}
 
   '@pkgjs/parseargs@0.11.0':
@@ -5199,7 +5199,7 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 22.2.0
 
-  '@opensearch-project/opensearch@3.5.0':
+  '@opensearch-project/opensearch@3.5.1':
     dependencies:
       aws4: 1.13.2
       debug: 4.4.0
