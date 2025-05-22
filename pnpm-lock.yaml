@@ -107,10 +107,10 @@ importers:
         version: 8.32.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
       zod:
         specifier: ^3.24.2
-        version: 3.25.17
+        version: 3.25.20
       zod-validation-error:
         specifier: ^3.4.0
-        version: 3.4.1(zod@3.25.17)
+        version: 3.4.1(zod@3.25.20)
 
 packages:
 
@@ -3096,6 +3096,7 @@ packages:
   multer@1.4.5-lts.1:
     resolution: {integrity: sha512-ywPWvcDMeH+z9gQq5qYHCCy+ethsk4goepZ45GLD63fOu0YcNecQxi64nDs3qluZB+murG3/D4dJ7+dGctcCQQ==}
     engines: {node: '>= 6.0.0'}
+    deprecated: Multer 1.x is impacted by a number of vulnerabilities, which have been patched in 2.x. You should upgrade to the latest 2.x version.
 
   mute-stream@1.0.0:
     resolution: {integrity: sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==}
@@ -4128,8 +4129,8 @@ packages:
     peerDependencies:
       zod: ^3.24.4
 
-  zod@3.25.17:
-    resolution: {integrity: sha512-8hQzQ/kMOIFbwOgPrm9Sf9rtFHpFUMy4HvN0yEB0spw14aYi0uT5xG5CE2DB9cd51GWNsz+DNO7se1kztHMKnw==}
+  zod@3.25.20:
+    resolution: {integrity: sha512-z03fqpTMDF1G02VLKUMt6vyACE7rNWkh3gpXVHgPTw28NPtDFRGvcpTtPwn2kMKtQ0idtYJUTxchytmnqYswcw==}
 
 snapshots:
 
@@ -9120,8 +9121,8 @@ snapshots:
 
   yoctocolors-cjs@2.1.2: {}
 
-  zod-validation-error@3.4.1(zod@3.25.17):
+  zod-validation-error@3.4.1(zod@3.25.20):
     dependencies:
-      zod: 3.25.17
+      zod: 3.25.20
 
-  zod@3.25.17: {}
+  zod@3.25.20: {}
