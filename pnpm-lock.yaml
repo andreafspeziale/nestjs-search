@@ -107,10 +107,10 @@ importers:
         version: 8.33.0(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
       zod:
         specifier: ^3.24.2
-        version: 3.25.36
+        version: 3.25.42
       zod-validation-error:
         specifier: ^3.4.0
-        version: 3.4.1(zod@3.25.36)
+        version: 3.4.1(zod@3.25.42)
 
 packages:
 
@@ -4139,8 +4139,8 @@ packages:
     peerDependencies:
       zod: ^3.24.4
 
-  zod@3.25.36:
-    resolution: {integrity: sha512-eRFS3i8T0IrpGdL8HQyqFAugGOn7jOjyGgGdtv5NY4Wkhi7lJDk732bNZ609YMIGFbLoaj6J69O1Mura23gfIw==}
+  zod@3.25.42:
+    resolution: {integrity: sha512-PcALTLskaucbeHc41tU/xfjfhcz8z0GdhhDcSgrCTmSazUuqnYqiXO63M0QUBVwpBlsLsNVn5qHSC5Dw3KZvaQ==}
 
 snapshots:
 
@@ -9146,8 +9146,8 @@ snapshots:
 
   yoctocolors-cjs@2.1.2: {}
 
-  zod-validation-error@3.4.1(zod@3.25.36):
+  zod-validation-error@3.4.1(zod@3.25.42):
     dependencies:
-      zod: 3.25.36
+      zod: 3.25.42
 
-  zod@3.25.36: {}
+  zod@3.25.42: {}
