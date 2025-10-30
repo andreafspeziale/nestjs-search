@@ -68,7 +68,7 @@
     "@release-it/conventional-changelog": "8.0.2",
     "@tsconfig/node22": "22.0.2",
     "@tsconfig/recommended": "1.0.11",
-    "@tsconfig/strictest": "2.0.6",
+    "@tsconfig/strictest": "2.0.7",
     "@types/jest": "^29.5.14",
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.1",
