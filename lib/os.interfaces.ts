@@ -1,6 +1,4 @@
 import * as OSTypes from '@opensearch-project/opensearch';
-import { Type } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 
 export type { OSTypes };
 
@@ -60,8 +58,6 @@ export interface OSConfig<
 }
 
 export interface OSModuleAsyncOptions {
-  inject: [Type<ConfigService<OSConfig, true>>];
-  useFactory: (
-    ...configService: [ConfigService<OSConfig, true>]
-  ) => Promise<OSModuleOptions> | OSModuleOptions;
+  inject: any[];
+  useFactory: (...args: any[]) => Promise<OSModuleOptions> | OSModuleOptions;
 }
