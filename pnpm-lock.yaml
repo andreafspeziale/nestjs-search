@@ -21,7 +21,7 @@ importers:
     devDependencies:
       '@aws-sdk/credential-providers':
         specifier: ^3.629.0
-        version: 3.1108.0
+        version: 3.1109.0
       '@commitlint/cli':
         specifier: ^19.7.1
         version: 19.8.1(@types/node@22.15.18)(typescript@5.9.3)
@@ -165,8 +165,8 @@ packages:
     resolution: {integrity: sha512-0YfczxGXF3RjGj8z7QG/Ho2HnLGKDHfPSHiTs47UU1U/+mmwISDN+rvGKt2zh+3FX8NdT4xd95LGBGyhQw2dgQ==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/credential-providers@3.1108.0':
-    resolution: {integrity: sha512-7SqcLftCMe4zWO4yw9R19hp1oX3f8/tf0au+meKVHSrgtDPEWQLjXmqIlIhjSwO5x9PRvA3jzgJxoaEUfkPTBg==}
+  '@aws-sdk/credential-providers@3.1109.0':
+    resolution: {integrity: sha512-F6s4maJt0q/g5v8Js3GQV1zt/vmccWW1ScpsrqKd61zIMMLc6iQa4ywHrRViPWgEbPazM9XhENk6zffr7sFaLQ==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/nested-clients@3.997.42':
@@ -4087,7 +4087,7 @@ snapshots:
       '@smithy/types': 4.17.0
       tslib: 2.8.1
 
-  '@aws-sdk/credential-providers@3.1108.0':
+  '@aws-sdk/credential-providers@3.1109.0':
     dependencies:
       '@aws-sdk/core': 3.977.7
       '@aws-sdk/credential-provider-cognito-identity': 3.972.67
