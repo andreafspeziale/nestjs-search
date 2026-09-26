@@ -21,7 +21,7 @@ importers:
     devDependencies:
       '@aws-sdk/credential-providers':
         specifier: ^3.629.0
-        version: 3.1140.0
+        version: 3.1141.0
       '@commitlint/cli':
         specifier: ^19.7.1
         version: 19.8.1(@types/node@22.15.18)(typescript@5.9.3)
@@ -165,8 +165,8 @@ packages:
     resolution: {integrity: sha512-/y9WvNtlcPBGLR0qc1a+9J/xtYZfVczvLUOuXaVWylzttH7ewsxwHtjmiJSolNrVSDorIxHGHMU61CbonRkmwA==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/credential-providers@3.1140.0':
-    resolution: {integrity: sha512-0R0EevMhzsqDGWpBy6jR01NBgCQzizRibcESL0V7rs1yVwfv3zzZSJ8/ofpljyC/ZvCo5c/dMrKtm7hNKVMJMA==}
+  '@aws-sdk/credential-providers@3.1141.0':
+    resolution: {integrity: sha512-NgnEx9d4QGxbtNW3qf/LUgKSm4svcexwxJH/ksEgYibqohq25SYULXk0lq7gzk25NRt6LA/B01MW68SGsgHUOg==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/nested-clients@3.997.46':
@@ -990,8 +990,8 @@ packages:
     resolution: {integrity: sha512-ThMkboGeONWXAelq9FvGsuJC4rOi+qyC4/zhUF58xYpxUg5sQKx2VXZYJmtNjr4dSuBJ1HeJXETQILCz3wOHvw==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/signature-v4@5.7.3':
-    resolution: {integrity: sha512-7ImGm+FkHRLcBaRttIAMZ6bzJZWb2cJGoYjq46F2UjycujWzrL9GEN9h4w7eQyXJYnltrUhxbbieBAIRrdqpow==}
+  '@smithy/signature-v4@5.7.4':
+    resolution: {integrity: sha512-tHy0K0VtqNd5Y7Y41h0a0Lhh0L1GzC08dTWg0F7vRJWFtTENg7IZikf3wQkanYIRdb7ngoIPMTmqgUi401fEeQ==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/types@4.19.0':
@@ -3987,7 +3987,7 @@ snapshots:
       '@aws-sdk/xml-builder': 3.972.41
       '@aws/lambda-invoke-store': 0.3.0
       '@smithy/core': 3.35.0
-      '@smithy/signature-v4': 5.7.3
+      '@smithy/signature-v4': 5.7.4
       '@smithy/types': 4.19.0
       bowser: 2.14.1
       tslib: 2.8.1
@@ -4084,7 +4084,7 @@ snapshots:
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
-  '@aws-sdk/credential-providers@3.1140.0':
+  '@aws-sdk/credential-providers@3.1141.0':
     dependencies:
       '@aws-sdk/core': 3.978.1
       '@aws-sdk/credential-provider-cognito-identity': 3.972.71
@@ -4117,7 +4117,7 @@ snapshots:
   '@aws-sdk/signature-v4-multi-region@3.996.47':
     dependencies:
       '@aws-sdk/types': 3.974.6
-      '@smithy/signature-v4': 5.7.3
+      '@smithy/signature-v4': 5.7.4
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
@@ -5084,7 +5084,7 @@ snapshots:
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
-  '@smithy/signature-v4@5.7.3':
+  '@smithy/signature-v4@5.7.4':
     dependencies:
       '@smithy/core': 3.35.0
       '@smithy/types': 4.19.0
