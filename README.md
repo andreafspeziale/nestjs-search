@@ -2,7 +2,7 @@
   <p>
     <img src="./assets/os-logo.png" width="160" alt="OpenSearch Logo" />
     <b></b>
-    <img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" />
+    <img src="./assets/nest-logo.svg" width="320" alt="Nest Logo" />
   </p>
   <p>
     <a href="https://opensearch.org/" target="blank">OpenSearch</a> module and service for <a href="https://github.com/nestjs/nest" target="blank">Nest</a>,<br>
