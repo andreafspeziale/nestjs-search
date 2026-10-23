@@ -21,7 +21,7 @@ importers:
     devDependencies:
       '@aws-sdk/credential-providers':
         specifier: ^3.629.0
-        version: 3.1155.0
+        version: 3.1156.0
       '@commitlint/cli':
         specifier: ^19.7.1
         version: 19.8.1(@types/node@22.15.18)(typescript@5.9.3)
@@ -165,8 +165,8 @@ packages:
     resolution: {integrity: sha512-LUo46IqPTJ4xKBsrLuoaxiv/D2GTBCcFDMD1y3jKIqPR/p7Rw14RJFZ0iRWftqZtyLPQX9JMGnSi3mBu4y/pNA==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/credential-providers@3.1155.0':
-    resolution: {integrity: sha512-XNxG7Q+5f5UpeonwDZTfm2IAr28vaKXnNQYh9tqHupmXxT/ET3NarswObINebq8HyiInq/ObrzTDY6orkj9SsA==}
+  '@aws-sdk/credential-providers@3.1156.0':
+    resolution: {integrity: sha512-WNHNe8ZNWoiDVabLNKPVY7zybzO/DaBkV0cBDs/kJOLUXvXOsEeYeWYId3j27538Q66Wh49Xle1c4M24aoKgpw==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/nested-clients@3.997.50':
@@ -1304,8 +1304,8 @@ packages:
   before-after-hook@4.0.0:
     resolution: {integrity: sha512-q6tR3RPqIB1pMiTRMFcZwuG5T8vwp+vUvEG0vuI6B+Rikh5BfPp2fQ82c925FOs+b0lcFQ8CFrL+KbilfZFhOQ==}
 
-  body-parser@2.3.0:
-    resolution: {integrity: sha512-2cGmJupaNgg+QUwVLAucDuWuoMZ6EX9iHDRswZ5lsNYEmwPaRknMPCLZz07yTzVq/83p4o/wzbDZbBrTvGGTIw==}
+  body-parser@2.4.0:
+    resolution: {integrity: sha512-Ifk1KcLrxaGt1occQagQNFNNOqRt1LFuehEnHHzB8Z6cRgIxRU1TBaiIsUiCdA+gy5PL7Y1IX31DNKkRmxtXjQ==}
     engines: {node: '>=18'}
 
   bowser@2.14.1:
@@ -4087,7 +4087,7 @@ snapshots:
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
-  '@aws-sdk/credential-providers@3.1155.0':
+  '@aws-sdk/credential-providers@3.1156.0':
     dependencies:
       '@aws-sdk/core': 3.978.5
       '@aws-sdk/credential-provider-cognito-identity': 3.972.75
@@ -5490,7 +5490,7 @@ snapshots:
 
   before-after-hook@4.0.0: {}
 
-  body-parser@2.3.0:
+  body-parser@2.4.0:
     dependencies:
       bytes: 3.1.2
       content-type: 2.1.0
@@ -6246,7 +6246,7 @@ snapshots:
   express@5.0.1:
     dependencies:
       accepts: 2.0.0
-      body-parser: 2.3.0
+      body-parser: 2.4.0
       content-disposition: 1.1.0
       content-type: 1.0.5
       cookie: 0.7.1
