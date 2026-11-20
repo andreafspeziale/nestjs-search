@@ -21,7 +21,7 @@ importers:
     devDependencies:
       '@aws-sdk/credential-providers':
         specifier: ^3.629.0
-        version: 3.1172.0
+        version: 3.1173.0
       '@commitlint/cli':
         specifier: ^19.7.1
         version: 19.8.1(@types/node@22.15.18)(typescript@5.9.3)
@@ -165,8 +165,8 @@ packages:
     resolution: {integrity: sha512-duLeE3xlf0viHeH+1RM4z5duR3b32BCZTWVMu+MbxFPjQBxy7hmIGEqt5hekuFPRuXoyhMovjNl+PNNsb5oiGQ==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/credential-providers@3.1172.0':
-    resolution: {integrity: sha512-ntWcHM9L5YDcZaa5rRMUiXztubKefl0yRRFe29t+cG/2jKD7ZWJ0+JDQdZ+0g4/ps+TxucVrtwQhltibadubOw==}
+  '@aws-sdk/credential-providers@3.1173.0':
+    resolution: {integrity: sha512-lmOiI3yN6Xf3Dekr27l4t5QyoszOzmUsy98nzP5S9E9nuBV0BJYr8DZQ9UyBcl5hQZ6u6b47/kAucQQm1ZtJQw==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/nested-clients@3.998.3':
@@ -2756,8 +2756,8 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
-  libphonenumber-js@1.13.16:
-    resolution: {integrity: sha512-tIOCM9yx2Go6d5/ZANe0K+G4AZek1Ymx81HxQpf19Sri4zMP95eQbKdnUGHAvFQ4nx0PeLhFqvAfisTADXj3tQ==}
+  libphonenumber-js@1.13.17:
+    resolution: {integrity: sha512-V92dxRHhYTsHF5B6IjR8rtKW6qL7xKuERPFFqZt7XQl8A+NikbwEzjhxGpM+R6JnWjaL7/wokWSdTG/eyYAscQ==}
 
   lilconfig@3.1.3:
     resolution: {integrity: sha512-/vlFKAoH5Cgt3Ie+JLhRbwOsCQePABiU3tJ1egGvyQ+33R/vcwM2Zl2QR/LzjsBeItPt3oSVXapn+m4nQDvpzw==}
@@ -4125,7 +4125,7 @@ snapshots:
       '@smithy/types': 4.20.0
       tslib: 2.9.1
 
-  '@aws-sdk/credential-providers@3.1172.0':
+  '@aws-sdk/credential-providers@3.1173.0':
     dependencies:
       '@aws-sdk/core': 3.981.0
       '@aws-sdk/credential-provider-cognito-identity': 3.972.83
@@ -5698,7 +5698,7 @@ snapshots:
   class-validator@0.14.1:
     dependencies:
       '@types/validator': 13.15.10
-      libphonenumber-js: 1.13.16
+      libphonenumber-js: 1.13.17
       validator: 13.15.35
     optional: true
 
@@ -7296,7 +7296,7 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  libphonenumber-js@1.13.16:
+  libphonenumber-js@1.13.17:
     optional: true
 
   lilconfig@3.1.3: {}
